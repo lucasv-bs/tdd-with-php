@@ -1,0 +1,17 @@
+{
+    "autoload": {
+        "psr-4": {
+            "TDD\\Examples\\": [
+                "src/Examples",
+                "tests/Examples"
+            ],
+            "TDD\\Store\\": [
+                "src/Store",
+                "tests/Store"
+            ]
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    }
+}
