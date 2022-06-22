@@ -38,7 +38,7 @@ class ShoppingCart
             return 0;
         }
 
-        $maxValue = $this->getProducts[0]->getUnitValue();
+        $maxValue = $this->getProducts()[0]->getUnitValue();
         foreach($this->getProducts() as $product)
         {
             if ($maxValue < $product->getUnitValue())
