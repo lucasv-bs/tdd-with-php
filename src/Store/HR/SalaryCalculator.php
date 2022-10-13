@@ -2,20 +2,15 @@
 
 namespace TDD\Store\HR;
 
-use TDD\Store\HR\Employee;
+use TDD\Store\HR\Employee,
+    TDD\Store\HR\Position;
 
 class SalaryCalculator
 {
     public function calculateSalary(Employee $employee)
     {
-        if ($employee->getPosition() === PositionTable::DEVELOPER) 
-        {
-            if ($employee->getSalary() > 3000.0) 
-            {
-                return $employee->getSalary() * 0.8;
-            }
-            return $employee->getSalary() * 0.9;
-        }
-        return $employee->getSalary() * 0.85;
+        $position = new Position($employee->getPosition());
+
+        return $position->getRule()->calculate($employee);
     }
 }
