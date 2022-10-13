@@ -56,4 +56,17 @@ class ShoppingCartTest extends TestCase
 
         $this->assertEqualsWithDelta(700.0, $value, 0.0001);
     }
+
+
+    public function testMustAddItems()
+    {
+        $this->assertEmpty($this->cart->getProducts());
+
+        $product = new Product('Geladeira', 900.0, 1);
+        $this->cart->add($product);
+
+        $expected = count($this->cart->getProducts());
+        $this->assertEquals(1, $expected);
+        $this->assertEquals($product, $this->cart->getProducts()[0]);
+    }
 }
