@@ -2,9 +2,10 @@
 
 namespace TDD\Store\Cart;
 
-use TDD\Store\Test\TestCase,
-    TDD\Store\Cart\ShoppingCart,
-    TDD\Store\Product\Product;
+use TDD\Store\Cart\ShoppingCart,
+    TDD\Store\Product\Product,
+    TDD\Store\Test\TestCase,
+    TDD\Store\Test\ShoppingCartBuilder;
 
 class ShoppingCartTest extends TestCase
 {
@@ -31,14 +32,14 @@ class ShoppingCartTest extends TestCase
 
     public function testMustReturnMaxValueIfCartWithManyElements()
     {
-        $cart = new ShoppingCart();
 
-        $cart->add(new Product("Geladeira", 900.00, 1));
-        $cart->add(new Product("Fogão", 1500.00, 1));
-        $cart->add(new Product("Máquina de lavar", 750.00, 1));
+
+    public function testDemonstratesUsingTheTestDataBuilder()
+    {
+        $cart = (new ShoppingCartBuilder())->withItems(300.0, 700.0, 200.0, 500.0)->create();
 
         $value = $cart->maxValue();
 
-        $this->assertEqualsWithDelta(1500.00, $value, 0.0001);
+        $this->assertEqualsWithDelta(700.0, $value, 0.0001);
     }
 }
