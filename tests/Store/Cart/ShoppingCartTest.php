@@ -69,4 +69,16 @@ class ShoppingCartTest extends TestCase
         $this->assertEquals(1, $expected);
         $this->assertEquals($product, $this->cart->getProducts()[0]);
     }
+
+
+    public function testListOfProducts()
+    {
+        $productList = (new ShoppingCart())
+            ->add(new Product('Jogo de jantar', 200.0, 1))
+            ->add(new Product('Jogo de pratos', 100.0, 1));
+
+        $this->assertEquals(2, count($productList->getProducts()));
+        $this->assertEquals(200.0, $productList->getProducts()[0]->getUnitValue());
+        $this->assertEquals(100.0, $productList->getProducts()[1]->getUnitValue());
+    }
 }
